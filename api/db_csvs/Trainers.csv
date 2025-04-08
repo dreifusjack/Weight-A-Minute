@@ -1,0 +1,61 @@
+trainerId,userId,type,yearsOfEmployment
+1,33,Endurance Trainer,16
+2,22,Endurance Trainer,18
+3,27,Nutritionist,11
+4,5,Endurance Trainer,1
+5,20,HIIT Trainer,8
+6,35,Functional Training Coach,11
+7,15,Sports Specific Trainer,19
+8,1,Group Fitness Instructor,18
+9,16,Endurance Trainer,36
+10,23,HIIT Trainer,13
+11,24,Rehabilitation Specialist,37
+12,9,Functional Training Coach,8
+13,8,HIIT Trainer,15
+14,22,Sports Specific Trainer,25
+15,9,Strength Trainer,29
+16,33,Rehabilitation Specialist,10
+17,37,CrossFit Coach,28
+18,35,CrossFit Coach,24
+19,16,Strength Trainer,4
+20,8,Yoga Instructor,14
+21,18,Pilates Instructor,29
+22,35,Group Fitness Instructor,11
+23,40,Nutritionist,26
+24,20,Endurance Trainer,11
+25,17,Strength Trainer,10
+26,28,Group Fitness Instructor,34
+27,39,Functional Training Coach,12
+28,14,CrossFit Coach,13
+29,36,Bodybuilding Coach,26
+30,1,Flexibility Coach,35
+31,9,Weight Loss Specialist,2
+32,11,Bodybuilding Coach,18
+33,23,Weight Loss Specialist,21
+34,31,Sports Specific Trainer,27
+35,26,Yoga Instructor,22
+36,4,Flexibility Coach,14
+37,37,Endurance Trainer,20
+38,18,Rehabilitation Specialist,19
+39,22,Group Fitness Instructor,32
+40,5,Bodybuilding Coach,16
+41,12,CrossFit Coach,16
+42,15,CrossFit Coach,16
+43,12,Pilates Instructor,35
+44,23,Bodybuilding Coach,29
+45,30,Weight Loss Specialist,29
+46,2,Nutritionist,35
+47,20,Pilates Instructor,8
+48,34,Weight Loss Specialist,9
+49,1,Rehabilitation Specialist,39
+50,13,Nutritionist,35
+51,39,CrossFit Coach,30
+52,2,Strength Trainer,21
+53,11,Endurance Trainer,17
+54,31,Group Fitness Instructor,40
+55,3,Pilates Instructor,25
+56,8,CrossFit Coach,27
+57,10,Group Fitness Instructor,28
+58,31,Strength Trainer,11
+59,30,Sports Specific Trainer,31
+60,24,HIIT Trainer,14

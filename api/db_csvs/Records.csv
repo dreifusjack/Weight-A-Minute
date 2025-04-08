@@ -1,0 +1,46 @@
+name,userId,type,weight,reps,gymId
+Push-Up,15,Chest,445,3,32
+Squat,39,Legs,386,14,28
+Deadlift,27,Back,530,15,35
+Bench Press,35,Chest,545,12,42
+Pull-Up,2,Back,331,3,33
+Leg Press,40,Legs,510,11,13
+Bicep Curl,32,Arms,336,8,14
+Tricep Dip,31,Arms,207,6,37
+Lat Pulldown,18,Back,366,17,23
+Shoulder Press,24,Shoulders,431,9,21
+Lunges,20,Legs,145,18,14
+Chest Fly,2,Chest,254,7,40
+Barbell Row,34,Back,398,16,7
+Cable Row,18,Back,332,1,6
+Romanian Deadlift,25,Back,553,4,7
+Seated Leg Curl,38,Back,518,13,31
+Russian Twist,15,Core,119,16,8
+Plank,26,Core,185,17,19
+Burpee,5,Full Body,496,2,34
+Mountain Climber,3,Core,110,10,46
+Kettlebell Swing,22,Full Body,117,12,43
+Front Squat,26,Legs,438,8,4
+Jump Squat,13,Legs,358,16,37
+T-Bar Row,29,Back,517,10,13
+Lateral Raise,15,Shoulders,305,1,18
+Front Raise,6,Shoulders,267,9,39
+Dumbbell Row,26,Shoulders,341,5,16
+Leg Extension,26,Legs,303,14,19
+Leg Curl,17,Legs,139,8,15
+Glute Bridge,1,Core,180,6,6
+Hip Thrust,15,Core,525,19,1
+Dumbbell Press,14,Shoulders,301,3,26
+Cable Tricep Extension,37,Arms,515,7,5
+Hammer Curl,22,Arms,145,10,44
+Chest Press,7,Chest,288,2,47
+Cable Chest Fly,26,Chest,297,1,26
+Back Extension,24,Glutes,147,2,37
+Thrusters,5,Full Body,63,16,26
+Goblet Squat,12,Legs,404,2,16
+Box Jump,24,Legs,361,17,36
+Cable Tricep Pushdown,27,Glutes,124,15,23
+Cable Bicep Curl,21,Arms,116,15,33
+Battle Rope,13,Legs,296,5,3
+Step-Up,29,Legs,539,20,5
+Bulgarian Split Squat,27,Legs,76,12,41

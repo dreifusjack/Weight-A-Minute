@@ -1,0 +1,51 @@
+gymId,name,location,type,monthlyPrice,ownerId,adminId
+1,IronStrong,67639 Mesta Parkway,Spinning,118,6,19
+2,MuscleMax,72626 Marquette Trail,Zumba,46,5,19
+3,PeakProwess,846 Stoughton Lane,CrossFit,79,28,19
+4,PeakFitness,9 Onsgard Drive,Spinning,250,37,19
+5,BodyBalance,161 Southridge Plaza,Cardio,92,17,19
+6,BodyBlast,9 Cordelia Lane,Yoga,69,9,19
+7,GymRat,43 Farragut Alley,Spinning,100,29,19
+8,MuscleMagic,32387 Schurz Plaza,Spinning,210,15,19
+9,SweatCity,88291 Sherman Court,Cardio,197,33,19
+10,PumpPalace,18744 Oxford Junction,Yoga,247,9,19
+11,SweatSquad,2 Londonderry Court,Strength Training,234,31,19
+12,MuscleMax,25297 Merrick Terrace,Yoga,224,14,19
+13,PumpPerfection,63359 Wayridge Plaza,Yoga,43,19,19
+14,FitFrenzy,4 Sauthoff Lane,Spinning,234,16,19
+15,PumpPalace,73 Messerschmidt Terrace,Cardio,220,22,19
+16,BodyBlast,9590 Harper Alley,Yoga,27,11,19
+17,PumpPalace,5491 Boyd Park,Spinning,120,35,19
+18,EliteEndurance,192 Messerschmidt Plaza,Zumba,230,12,19
+19,StrengthZone,46 Tony Circle,Strength Training,43,13,19
+20,PowerHouse,643 Marcy Junction,Yoga,18,37,19
+21,FitZone,5 Rigney Drive,Yoga,248,1,19
+22,MuscleMagic,0 American Ash Circle,CrossFit,154,24,19
+23,EliteFitness,008 Westend Place,Spinning,234,30,19
+24,CoreCrush,6377 Mosinee Crossing,Cardio,183,13,19
+25,FitCamp,716 Hazelcrest Center,Zumba,135,22,19
+26,FitCamp,70 Dottie Avenue,Spinning,242,37,19
+27,BodyBlast,763 Kinsman Lane,CrossFit,29,19,19
+28,PowerPulse,4026 Randy Road,Pilates,102,36,19
+29,GymGlory,87713 Amoth Way,Spinning,82,1,19
+30,BodyBlast,67 Texas Alley,Pilates,136,19,19
+31,SweatBox,202 Brickson Park Plaza,Yoga,62,16,19
+32,FitFusion,0888 Linden Parkway,Zumba,46,14,19
+33,SweatXtreme,41 Southridge Avenue,Pilates,53,19,19
+34,PumpPalace,3 Killdeer Junction,Spinning,211,33,19
+35,MuscleMania,3751 Anniversary Crossing,CrossFit,150,3,19
+36,SweatBox,3 Kingsford Center,Spinning,70,5,19
+37,IronPump,2917 Pine View Terrace,Yoga,211,2,19
+38,PeakProwess,6654 Anniversary Plaza,Yoga,168,27,19
+39,MuscleMax,834 Pierstorff Point,Cardio,175,9,19
+40,IronPump,2 Hazelcrest Circle,Yoga,114,36,19
+41,SweatElite,1353 Bartillon Center,Spinning,211,22,19
+42,PumpItUp,9 Loomis Lane,Strength Training,220,24,19
+43,PumpPalace,6 Vermont Pass,Zumba,95,30,19
+44,SweatElite,315 Scoville Center,Spinning,35,36,19
+45,FitZone,506 Northfield Point,Strength Training,222,11,19
+46,EliteAthlete,21368 Badeau Lane,Zumba,147,5,19
+47,StrengthZone,3 Hansons Pass,Yoga,224,32,19
+48,PowerPulse,185 Mariners Cove Lane,Zumba,168,38,19
+49,SweatBox,51 Northfield Parkway,Zumba,126,25,19
+50,SweatSquad,590 Randy Hill,Zumba,229,10,19

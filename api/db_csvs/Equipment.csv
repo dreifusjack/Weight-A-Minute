@@ -1,0 +1,51 @@
+equipmentId,name,minWeight,maxWeight,brand,description
+1,Kettlebells,8,221,GymPro,poor condition
+2,Treadmill,15,104,PowerPulse,rusty
+3,Sled Push,36,236,BodyBlitz,poor condition
+4,Weighted Vest,41,125,ProFlex,worn out
+5,Weighted Vest,36,263,GymPro,damaged
+6,Sandbag,12,165,ProFlex,vintage
+7,Medicine Ball,24,146,MaxFlex,high quality
+8,TRX Suspension Trainer,35,134,EliteX,vintage
+9,Stepper Machine,7,287,TitanGym,mint condition
+10,Weight Bench,36,151,CoreFit,average quality
+11,Foam Roller,26,266,CoreFit,brand new
+12,Weight Bench,13,235,GymMaster,like new
+13,Leg Press Machine,25,209,CoreCrush,fair condition
+14,Kettlebells,44,179,TitanFit,mint condition
+15,Sled Push,31,118,BodyBlitz,good condition
+16,Kettlebells,35,249,GymMax,top-notch
+17,Hand Gripper,7,176,ProFlex,average quality
+18,Pull-up Bar,45,279,ProGains,brand new
+19,Stepper Machine,39,214,EliteX,poor condition
+20,Treadmill,27,176,ProGains,damaged
+21,Yoga Mat,31,135,CoreFit,slightly used
+22,Squat Rack,22,227,CoreFit,top-notch
+23,Weighted Vest,28,206,EliteFitness,damaged
+24,Stepper Machine,33,80,MuscleTech,like new
+25,Cable Machine,28,289,CoreCrush,worn out
+26,Agility Ladder,13,173,CoreFit,slightly used
+27,Hand Gripper,16,214,FlexForce,damaged
+28,Treadmill,29,162,FlexForce,vintage
+29,TRX Suspension Trainer,23,204,ProGains,broken
+30,Exercise Bike,25,265,BodyBlitz,mint condition
+31,Elliptical Trainer,43,95,EliteX,low quality
+32,TRX Suspension Trainer,15,289,FlexGym,average quality
+33,Pilates Reformer,41,225,IronWorks,fair condition
+34,Battle Ropes,30,129,IronWorks,barely used
+35,Jump Rope,12,179,GymPro,slightly used
+36,Yoga Mat,12,119,PowerPulse,top-notch
+37,Stepper Machine,31,83,GymMax,low quality
+38,Ab Roller,33,288,MaxStrength,low quality
+39,Kettlebells,12,270,MaxFlex,damaged
+40,Pilates Reformer,10,119,MuscleTech,good condition
+41,Sandbag,29,167,BodyTech,mint condition
+42,Weighted Hula Hoop,11,238,ProGains,top-notch
+43,Jump Rope,33,178,MaxStrength,poor condition
+44,TRX Suspension Trainer,12,177,PowerZone,functional
+45,Foam Roller,14,225,FitFusion,excellent condition
+46,Ankle Weights,28,285,FitZone,functional
+47,Medicine Ball,16,274,MaxFlex,fair condition
+48,Weighted Hula Hoop,13,135,GymMax,rusty
+49,Jump Rope,5,249,EliteFitness,fair condition
+50,Kettlebells,44,228,FitZone,like new
