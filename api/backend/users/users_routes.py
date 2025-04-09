@@ -2,29 +2,50 @@ from flask import Blueprint
 from flask import request
 from flask import jsonify
 from flask import make_response
+from backend.utils.email_utils import send_email
 from backend.db_connection import db
 
 users = Blueprint('users', __name__)
+
+# helper function to get all users 
+def fetch_all_users():
+    query = '''
+    SELECT userId, DOB, gender, email, firstName, lastName 
+    FROM Users
+    '''
+    cursor = db.get_db().get_cursor()
+    cursor.execute(query)
+    return cursor.fetchall()
 
 # retrieves all users in the db
 @users.route('/users', methods=['GET'])
 def get_users(): 
   try:
-    query = '''
-    SELECT userId, DOB, gender, email, firstName, lastName 
-    FROM Users
-    '''
-
-    cursor = db.get_db().get_cursor()
-    cursor.execute(query)
-
-    response = make_response(jsonify(cursor.fetchall()))
+    users = fetch_all_users()
+    response = make_response(jsonify(users))
     response.status_code = 200
 
     return response
   except Exception as e:
     return jsonify({'error': str(e)}), 500
 
+# for admin use, sends an email notifcation to all users 
+@users.route('/users/notification', methods=['POST'])
+def send_notification():
+  try:
+    data = request.json
+    subject = data['subject']
+    body = data['body']
+
+    users = fetch_all_users()
+    for user in users:
+        user_email = user['email']
+        send_email(user_email, subject, body)
+
+    return jsonify({'message': 'Notification sent successfully.'}), 200
+  except Exception as e:
+    return jsonify({'error': {str(e)}}), 500
+  
 # for admin use, deactivates a user from the app
 @users.route('/users/<userId>', methods=['DELETE'])
 def deactivate_user(userId): 
@@ -46,7 +67,6 @@ def deactivate_user(userId):
     return response 
   except Exception as e:
     return jsonify({'error': str(e)}), 500
-  
 
 # creates a FAQ in the db
 @users.route('/faqs', methods=['POST'])
@@ -138,3 +158,4 @@ def delete_faq(faqId):
     return response
   except Exception as e:
     return jsonify({'error': str(e)}), 500
+  

@@ -8,6 +8,7 @@ from backend.gyms.gyms_routes import gyms
 from backend.fitness.fitness_routes import fitness
 from backend.community.community_routes import community
 from backend.simple.simple_routes import simple_routes
+from backend.shared import mail
 import os
 from dotenv import load_dotenv
 
@@ -50,6 +51,17 @@ def create_app():
     app.register_blueprint(gyms,        url_prefix='/g')
     app.register_blueprint(fitness,     url_prefix='/f')
     app.register_blueprint(community,   url_prefix='/c')
+
+    # Flask-mail api configs
+    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    app.config['MAIL_PORT'] = 587
+    app.config['MAIL_USE_TLS'] = True
+    app.config['MAIL_USE_SSL'] = False
+    app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+    app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+    app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_USERNAME')
+    mail.init_app(app) 
+
 
     # Don't forget to return the app object
     return app
