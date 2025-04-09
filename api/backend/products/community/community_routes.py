@@ -1,5 +1,5 @@
 from flask import Blueprint
 
-workouts = Blueprint('workouts', __name__)
+commutity = Blueprint('commutity', __name__)
 
 # routes go here
