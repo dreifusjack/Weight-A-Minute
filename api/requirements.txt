@@ -8,5 +8,4 @@ python-dotenv==1.0.1
 numpy==1.26.4
 pandas
 sqlalchemy
-python-dotenv
 pymysql

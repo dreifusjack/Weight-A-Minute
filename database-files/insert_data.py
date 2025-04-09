@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 from dotenv import load_dotenv
 
 # gather csv files
-folder = '"/apicode/db_csvs"'
+folder = '/database-files/db_csvs'
 csv_files = [file for file in os.listdir(folder) if file.endswith('csv')]
 
 # load the env file
