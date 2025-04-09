@@ -1,5 +1,5 @@
 from flask import Blueprint
 
-commutity = Blueprint('commutity', __name__)
+community = Blueprint('community', __name__)
 
 # routes go here
