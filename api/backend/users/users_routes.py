@@ -76,12 +76,21 @@ def create_faq():
     question = data['question']
     answer = data['answer']
 
+    # auto incr not working :(
+    cursor = db.get_db().cursor()
+    cursor.execute("SELECT MAX(faqId) as max_id FROM FAQs")
+    result = cursor.fetchone()
+    
+    if result and 'max_id' in result and result['max_id'] is not None:
+        new_id = result['max_id'] + 1
+    else:
+        new_id = 1 
+
     query = '''
-    INSERT INTO FAQs (question, answer) VALUES (%s, %s)
+    INSERT INTO FAQs (faqId, question, answer) VALUES (%s, %s, %s)
     ''' 
 
-    cursor = db.get_db().cursor()
-    cursor.execute(query, (question, answer))
+    cursor.execute(query, (new_id, question, answer))
     
     db.get_db().commit()
     response = make_response(jsonify({'message': f'Successfully created FAQ with question: {question}, answer: {answer}'}))
