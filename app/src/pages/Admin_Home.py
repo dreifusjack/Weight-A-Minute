@@ -23,4 +23,4 @@ if st.button('Gym Information',
 if st.button('User Information', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/21_ML_Model_Mgmt.py')
+  st.switch_page('pages/Admin_View_Users.py')

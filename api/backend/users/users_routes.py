@@ -70,7 +70,7 @@ def send_notification():
 def deactivate_user(userId): 
   try: 
     query = '''
-    DELETE FROM users WHERE userID = %s
+    DELETE FROM Users WHERE userID = %s
     '''
 
     cursor = db.get_db().cursor()

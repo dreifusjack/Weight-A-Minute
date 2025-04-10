@@ -30,7 +30,7 @@ except:
 if "delete_index" not in st.session_state:
     st.session_state.delete_index = None
 
-st.markdown("## Available Gyms")
+st.markdown("## Supported Gyms")
 st.markdown("---")
 
 # Rendering gyms as cards
@@ -60,10 +60,10 @@ for idx, gym in enumerate(gyms):
 
             with col2:
                 if st.session_state.delete_index == idx:
-                    st.warning("Are you sure you want to delete this Gym?")
+                    st.warning("Are you sure you want to remove this Gym?")
                     confirm_col, cancel_col = st.columns(2)
                     with confirm_col:
-                        if st.button("Yes, delete", key=f"confirm_delete_{idx}"):
+                        if st.button("Yes, removes", key=f"confirm_delete_{idx}"):
                             requests.delete(API_URL + f"g/gyms/{gym_id}")
                             st.session_state.delete_index = None
                             st.rerun()
@@ -72,7 +72,7 @@ for idx, gym in enumerate(gyms):
                             st.session_state.delete_index = None
                             st.rerun()
                 else:
-                    if st.button("Delete", key=f"delete_btn_{idx}"):
+                    if st.button("Remove", key=f"delete_btn_{idx}"):
                         st.session_state.delete_index = idx
                         st.rerun()
 
