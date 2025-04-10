@@ -16,12 +16,29 @@ services:
       - 4000:4000
 
   db:
+    image: mysql:9
     env_file:
       - ./api/.env
-    image: mysql:9
+    environment:
+      - MYSQL_DATABASE=weight-a-minute
     container_name: mysql_db
     hostname: db
     volumes:
       - ./database-files:/docker-entrypoint-initdb.d/:ro
     ports:
       - 3200:3306
+
+  data-loader:
+    image: python:3.9-slim
+    container_name: data-loader
+    depends_on:
+      - db
+    env_file:
+      - ./api/.env
+    volumes:
+      - ./database-files:/app
+    command: >
+      bash -c "
+        pip install pandas sqlalchemy pymysql python-dotenv cryptography &&
+        python /app/02_insert_data.py
+      "
