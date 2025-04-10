@@ -13,7 +13,7 @@ def remove_gym(gymId):
     DELETE FROM Gyms WHERE gymId = %s
     '''
 
-    cursor = db.get_db().get_cursor()
+    cursor = db.get_db().cursor()
     cursor.execute(query, (gymId,))
 
     if cursor.rowcount == 0: # determines how many rows affected
@@ -39,7 +39,7 @@ def get_equipment_present_gyms(equipmentId):
     WHERE ge.equipmentId = %s
     '''
 
-    cursor = db.get_db().get_cursor()
+    cursor = db.get_db().cursor()
     cursor.execute(query, (equipmentId,))
     response = make_response(jsonify(cursor.fetchall()))
     response.status_code = 200
@@ -57,7 +57,7 @@ def get_gym_request():
     FROM GymRequests
     '''
 
-    cursor = db.get_db().get_cursor()
+    cursor = db.get_db().cursor()
     cursor.execute(query)
 
     response = make_response(jsonify(cursor.fetchall()))

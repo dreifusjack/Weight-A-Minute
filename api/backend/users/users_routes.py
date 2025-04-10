@@ -13,7 +13,7 @@ def fetch_all_users():
     SELECT userId, DOB, gender, email, firstName, lastName 
     FROM Users
     '''
-    cursor = db.get_db().get_cursor()
+    cursor = db.get_db().cursor()
     cursor.execute(query)
     return cursor.fetchall()
 
@@ -54,7 +54,7 @@ def deactivate_user(userId):
     DELETE FROM users WHERE userID = %s
     '''
 
-    cursor = db.get_db().get_cursor()
+    cursor = db.get_db().cursor()
     cursor.execute(query, (userId,))
 
     if cursor.rowcount == 0: # determines how many rows affected
@@ -80,7 +80,7 @@ def create_faq():
     INSERT INTO FAQs (question, answer) VALUES (%s, %s)
     ''' 
 
-    cursor = db.get_db().get_cursor()
+    cursor = db.get_db().cursor()
     cursor.execute(query, (question, answer))
     
     db.get_db().commit()
@@ -101,7 +101,7 @@ def get_faqs():
     FROM FAQs
     '''
 
-    cursor = db.get_db().get_cursor()
+    cursor = db.get_db().cursor()
     cursor.execute(query)
 
     response = make_response(jsonify(cursor.fetchall()))
@@ -126,7 +126,7 @@ def update_faq(faqId):
         answer = %s 
     WHERE faqId = %s'''
 
-    cursor = db.get_db().get_cursor()
+    cursor = db.get_db().cursor()
     cursor.execute(query, (question, answer, faqId))
 
     db.get_db().commit()
@@ -145,7 +145,7 @@ def delete_faq(faqId):
     DELETE FROM FAQs WHERE faqId = %s
     '''
 
-    cursor = db.get_db().get_cursor()
+    cursor = db.get_db().cursor()
     cursor.execute(query, (faqId,))
 
     if cursor.rowcount == 0: # determines how many rows affected
