@@ -10,6 +10,9 @@ st.set_page_config(layout = 'wide')
 
 SideBarLinks()
 
+if st.button("⬅️ Go Back to Admin Home", use_container_width=True):
+    st.switch_page('pages/Admin_Home.py')
+
 st.title('FAQs')
 
 # Fetching faqs

@@ -79,7 +79,7 @@ if st.button('Act as App Administrator',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'admin'
     st.session_state['first_name'] = 'Adam'
-    st.switch_page('pages/20_Admin_Home.py')
+    st.switch_page('pages/Admin_Home.py')
 
 
 

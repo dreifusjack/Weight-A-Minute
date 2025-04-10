@@ -5,6 +5,21 @@ from backend.db_connection import db
 
 gyms = Blueprint('gyms', __name__)
 
+# Retrieve all gyms from the db
+@gyms.route('/gyms', methods=['GET'])
+def get_gyms():
+  try:
+    query = '''
+    SELECT gymId, name, location, type, monthlyPrice, ownerId 
+    FROM Gyms
+    '''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    return jsonify(cursor.fetchall()), 200
+  except Exception as e: 
+    return jsonify({'error': str(e)}), 500
+
 # Remove the gym with the given id from the db
 @gyms.route('/gyms/<gymId>', methods=['DELETE'])
 def remove_gym(gymId):
@@ -66,4 +81,25 @@ def get_gym_request():
     return response
   except Exception as e: 
     return jsonify({'error': str(e)}), 500 
+
+@gyms.route('/gymRequests/<gymRequestId>', methods=['DELETE'])
+def delete_gym_request(gymRequestId):
+  try:
+    query = '''
+    DELETE FROM GymRequests WHERE requestId = %s
+    '''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (gymRequestId,))
+
+    if cursor.rowcount == 0: # determines how many rows affected
+      return jsonify({'message': f'Gym with id: {gymRequestId} not found'}), 404
+    
+    db.get_db().commit()
+    response = make_response(jsonify({'message': f'Gym with id: {gymRequestId} successfully deleted'}))
+    response.status_code = 200
+
+    return response
+  except Exception as e: 
+    return jsonify({'error': str(e)}), 500
 

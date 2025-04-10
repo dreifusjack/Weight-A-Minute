@@ -18,7 +18,7 @@ if st.button('Update FAQs',
 if st.button('Gym Information', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/21_ML_Model_Mgmt.py')
+  st.switch_page('pages/Admin_View_Gyms.py')
 
 if st.button('User Information', 
              type='primary',

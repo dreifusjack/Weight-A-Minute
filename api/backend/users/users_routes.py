@@ -28,6 +28,25 @@ def get_users():
     return response
   except Exception as e:
     return jsonify({'error': str(e)}), 500
+  
+# retrieves a single user by the given id
+@users.route('/users/<userId>', methods=['GET'])
+def get_single_user(userId):
+  try:
+    query = '''
+    SELECT firstName, lastName, email, gender, DOB 
+    FROM Users 
+    WHERE userId = %s
+    '''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (userId,))
+    response = make_response(jsonify(cursor.fetchall()))
+    response.status_code = 200
+    
+    return response 
+  except Exception as e:
+    return jsonify({'error': str(e)}), 500
 
 # for admin use, sends an email notifcation to all users 
 @users.route('/users/notification', methods=['POST'])
