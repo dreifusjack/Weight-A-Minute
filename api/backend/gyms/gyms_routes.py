@@ -1,9 +1,45 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from flask import jsonify
 from flask import make_response
 from backend.db_connection import db
 
 gyms = Blueprint('gyms', __name__)
+
+# create a gym in db
+@gyms.route('/gyms', methods=['POST'])
+def create_gym():
+  try:
+    data = request.json 
+    name = data['name']
+    location = data['location']
+    gym_type = data['gym_type']
+    price = data['price']
+    owner_id = data['owner_id']
+
+     # auto incr not working :(
+    cursor = db.get_db().cursor()
+    cursor.execute("SELECT MAX(gymId) as max_id FROM Gyms")
+    result = cursor.fetchone()
+    
+    if result and 'max_id' in result and result['max_id'] is not None:
+        new_id = result['max_id'] + 1
+    else:
+        new_id = 1 
+
+    query = '''
+    INSERT INTO Gyms (gymId, name, location, type, monthlyPrice, ownerId) 
+        VALUES (%s, %s, %s, %s, %s, %s)
+    '''
+
+    cursor.execute(query, (new_id, name, location, gym_type, price, owner_id))
+    db.get_db().commit()
+
+    response = make_response(jsonify({'message': f'Successfully created new gym!'}))
+    response.status_code = 200
+
+    return response 
+  except Exception as e:
+    return jsonify({'error': str(e)}), 500 
 
 # Retrieve all gyms from the db
 @gyms.route('/gyms', methods=['GET'])
