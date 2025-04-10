@@ -57,9 +57,11 @@ def send_notification():
     body = data['body']
 
     users = fetch_all_users()
+    emails = []
     for user in users:
-        user_email = user['email']
-        send_email(user_email, subject, body)
+        emails.append(user['email'])
+    
+    send_email(emails, subject, body)
 
     return jsonify({'message': 'Notification sent successfully.'}), 200
   except Exception as e:

@@ -60,6 +60,7 @@ with st.form("email_notification_form"):
             if response.status_code == 200:
                 st.session_state.reset_form = True 
                 st.rerun()
+                st.success("Notification sent successfully!")
             else:
                 st.error(f"Failed to send notification. Status code: {response.status_code}")
 
@@ -81,7 +82,7 @@ for idx, user in enumerate(users):
     email = user.get("email", "Missing emails")
 
     with st.container():
-        with st.expander(f"👽 **{user_name}**", expanded=False):
+        with st.expander(f"🤠 **{user_name}**", expanded=False):
             col1, col2 = st.columns([3, 1])
 
             with col1:
