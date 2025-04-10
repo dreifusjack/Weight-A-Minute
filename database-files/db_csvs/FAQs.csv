@@ -1,41 +1,41 @@
 faqId,question,answer,dateUpdated,createdById
-1,Have you ever used a workout DVD?,Push harder,kbridat0@bing.com,13
-2,Do you prefer to workout outdoors or indoors?,Ask your trainer,jborrott1@jimdo.com,18
-3,Have you ever used a fitness app?,Yes,ehaliburn2@illinois.edu,23
-4,Do you enjoy swimming as a workout?,Not a chance,agilbride3@java.com,18
-5,Do you prefer high-intensity interval training?,Yes,tvondrasek4@gov.uk,5
-6,Do you enjoy hiking as a workout?,Not today,vberrey5@google.pl,24
-7,Do you like to set fitness goals?,Maybe,akneller6@360.cn,32
-8,Do you prefer high-intensity interval training?,Definitely,dbohlmann7@google.co.uk,24
-9,Have you ever used a foam roller?,Not a chance,ffaircley8@diigo.com,25
-10,Do you enjoy swimming as a workout?,Maybe,wbicheno9@shinystat.com,23
-11,Do you prefer to workout on your own or with a group?,Absolutely,apepina@is.gd,11
-12,Do you prefer to workout at a gym or at home?,Ask again later,ukiljanb@lycos.com,13
-13,Do you like to track your workouts?,Ask again later,mtutingc@cam.ac.uk,19
-14,Do you prefer to workout at home?,Of course,estaresmeared@cpanel.net,24
-15,Have you ever used a personal trainer?,Definitely,dpairpointe@fda.gov,38
-16,Have you ever used a personal trainer?,Of course,lthomasonf@sourceforge.net,29
-17,Do you like to do strength training?,Ask again later,imusterdg@youtube.com,24
-18,Do you prefer to workout in the evening?,Stay hydrated,igriegerh@epa.gov,37
-19,Have you ever tried CrossFit?,Stay hydrated,smccrofti@squidoo.com,40
-20,Do you prefer to workout in the morning or evening?,Definitely,jgrinstonj@symantec.com,14
-21,Do you enjoy Zumba?,Stay hydrated,agaleyk@homestead.com,13
-22,Have you ever tried yoga?,No,ludalll@rakuten.co.jp,18
-23,Have you ever used resistance bands in your workout?,No,ocosensm@oracle.com,19
-24,Do you prefer morning workouts?,Definitely,aloughheadn@ning.com,40
-25,Do you enjoy swimming as a workout?,Yes,stingleo@friendfeed.com,23
-26,Have you ever used a personal trainer?,Absolutely,bjoslandp@netscape.com,15
-27,Do you prefer working out alone?,Not today,djanousekq@dailymail.co.uk,19
-28,Do you like to listen to music while working out?,Of course,cbinesr@stumbleupon.com,35
-29,Have you ever used a foam roller?,Absolutely,bcorpes@is.gd,25
-30,Have you ever tried yoga?,Absolutely,ydurrellt@answers.com,38
-31,Do you like to stretch before exercising?,I'll try,gjestu@deviantart.com,4
-32,Do you prefer to workout at home?,Push harder,eseagov@webeden.co.uk,21
-33,Do you prefer to workout at a gym or at home?,Ask your trainer,smcclymontw@alibaba.com,22
-34,Do you enjoy cardio workouts?,I'll try,rguitelx@163.com,13
-35,Have you ever taken a rest day?,Ask again later,mnavarrey@flavors.me,23
-36,Do you prefer to workout in the evening?,Ask your trainer,wsmallpiecez@microsoft.com,26
-37,Have you ever used a medicine ball in your workout?,Listen to your body,maaron10@mapy.cz,34
-38,Do you prefer to workout with a friend?,Stay hydrated,lcran11@yellowpages.com,31
-39,Do you prefer to workout with a friend?,Maybe,dluckman12@blogtalkradio.com,15
-40,Do you prefer to workout in a gym?,Of course,ssparrow13@mapquest.com,25
+1,Do you enjoy kickboxing for fitness?,sure thing,5/6/2024,9
+2,Do you enjoy outdoor running?,always,9/17/2024,11
+3,Do you meal prep for fitness goals?,maybe,1/1/2025,25
+4,Do you follow a plant-based diet for fitness reasons?,sure thing,1/23/2025,27
+5,Have you ever done a fitness challenge?,maybe,12/9/2024,36
+6,Do you set specific fitness goals for yourself?,never,10/9/2024,20
+7,Have you ever tried cryotherapy for muscle recovery?,without a doubt,1/7/2025,1
+8,Do you enjoy high-intensity interval training (HIIT)?,sure thing,5/11/2024,23
+9,Do you enjoy outdoor workouts?,certainly,11/10/2024,11
+10,Do you prioritize flexibility training?,definitely,3/29/2025,16
+11,Do you incorporate plyometric exercises into your routine?,sure thing,7/3/2024,4
+12,Have you ever done a fitness challenge?,definitely,7/13/2024,16
+13,Do you incorporate plyometric exercises into your routine?,always,4/24/2024,1
+14,Have you ever tried a fitness challenge with friends?,undoubtedly,12/11/2024,3
+15,Do you enjoy kickboxing for fitness?,sure thing,5/15/2024,24
+16,Have you ever tried a fitness app for workouts?,absolutely,12/22/2024,39
+17,Do you prefer cardio over weightlifting?,not sure,3/9/2025,29
+18,Do you prioritize getting enough sleep for recovery?,always,3/5/2025,38
+19,Do you enjoy hiking for fitness?,always,3/23/2025,29
+20,Do you practice proper form during workouts?,sure thing,11/25/2024,14
+21,Do you prioritize flexibility training?,not sure,8/8/2024,13
+22,Do you follow a plant-based diet for fitness reasons?,yes,2/21/2025,38
+23,Do you practice proper form during workouts?,without a doubt,3/14/2025,10
+24,Do you use a foam roller for recovery?,undoubtedly,2/7/2025,22
+25,Do you prioritize flexibility training?,unlikely,4/14/2024,20
+26,Have you ever tried CrossFit?,doubtful,9/14/2024,7
+27,Have you ever used resistance bands for workouts?,no way,4/20/2024,17
+28,Do you listen to music while working out?,unlikely,4/20/2024,19
+29,Do you lift weights regularly?,unlikely,8/11/2024,24
+30,Have you ever done a fitness challenge?,never,7/10/2024,25
+31,Do you focus on strength training or endurance?,without a doubt,3/25/2025,34
+32,Do you practice mindfulness during workouts?,doubtful,12/28/2024,25
+33,Have you ever done a fitness challenge?,no way,11/18/2024,32
+34,Do you prioritize flexibility training?,never,3/14/2025,31
+35,Have you ever tried a cleanse or detox for fitness purposes?,for sure,2/5/2025,38
+36,Have you ever tried a fitness subscription box?,maybe,11/20/2024,29
+37,Do you lift weights regularly?,no,10/24/2024,4
+38,Do you meal prep for fitness goals?,not a chance,12/30/2024,30
+39,Do you enjoy outdoor running?,absolutely,10/18/2024,16
+40,Do you prioritize recovery days?,definitely,4/17/2024,6
