@@ -10,11 +10,7 @@ CREATE TABLE Users
     email     varchar(255) NOT NULL,
     firstName varchar(100) NOT NULL,
     lastName  varchar(100) NOT NULL,
-    adminId   int,
-    CONSTRAINT fk_adminId_users_users
-        FOREIGN KEY (adminId) REFERENCES Users (userId)
-            ON DELETE SET NULL
-            ON UPDATE CASCADE
+    role      ENUM('member', 'admin') NOT NULL DEFAULT 'member'
 );
 
 CREATE TABLE FAQs
@@ -32,10 +28,11 @@ CREATE TABLE FAQs
 
 CREATE TABLE Trainers
 (
-    trainerId int AUTO_INCREMENT PRIMARY KEY,
-    userId    int          NOT NULL,
-    type      varchar(100) NOT NULL,
-    YOE       int          NOT NULL,
+    trainerId   int AUTO_INCREMENT PRIMARY KEY,
+    userId      int          NOT NULL,
+    type        varchar(100) NOT NULL,
+    YOE         int          NOT NULL,
+    description TEXT,
     CONSTRAINT fk_userId_trainers_users
         FOREIGN KEY (userId) REFERENCES Users (userId)
             ON DELETE CASCADE
@@ -197,8 +194,7 @@ CREATE TABLE Equipment
 CREATE TABLE Exercises
 (
     exerciseId int AUTO_INCREMENT PRIMARY KEY,
-    name       varchar(255) NOT NULL,
-    weight     int
+    name       varchar(255) NOT NULL
 );
 
 CREATE TABLE ExerciseEquipment
