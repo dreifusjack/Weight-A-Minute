@@ -1,46 +1,46 @@
-exerciseId,name,weight
-1,Push-Up,237
-2,Squat,133
-3,Deadlift,151
-4,Bench Press,6
-5,Pull-Up,130
-6,Leg Press,156
-7,Bicep Curl,119
-8,Tricep Dip,80
-9,Lat Pulldown,183
-10,Shoulder Press,222
-11,Lunges,87
-12,Chest Fly,247
-13,Barbell Row,230
-14,Cable Row,60
-15,Romanian Deadlift,286
-16,Seated Leg Curl,82
-17,Russian Twist,139
-18,Plank,134
-19,Burpee,114
-20,Mountain Climber,226
-21,Kettlebell Swing,213
-22,Front Squat,89
-23,Jump Squat,113
-24,T-Bar Row,76
-25,Lateral Raise,98
-26,Front Raise,129
-27,Dumbbell Row,238
-28,Leg Extension,133
-29,Leg Curl,72
-30,Glute Bridge,224
-31,Hip Thrust,126
-32,Dumbbell Press,93
-33,Cable Tricep Extension,125
-34,Hammer Curl,181
-35,Chest Press,93
-36,Cable Chest Fly,29
-37,Back Extension,280
-38,Thrusters,235
-39,Goblet Squat,58
-40,Box Jump,65
-41,Cable Tricep Pushdown,224
-42,Cable Bicep Curl,183
-43,Battle Rope,133
-44,Step-Up,88
-45,Bulgarian Split Squat,202
+exerciseId,name
+1,Push-Up
+2,Squat
+3,Deadlift
+4,Bench Press
+5,Pull-Up
+6,Leg Press
+7,Bicep Curl
+8,Tricep Dip
+9,Lat Pulldown
+10,Shoulder Press
+11,Lunges
+12,Chest Fly
+13,Barbell Row
+14,Cable Row
+15,Romanian Deadlift
+16,Seated Leg Curl
+17,Russian Twist
+18,Plank
+19,Burpee
+20,Mountain Climber
+21,Kettlebell Swing
+22,Front Squat
+23,Jump Squat
+24,T-Bar Row
+25,Lateral Raise
+26,Front Raise
+27,Dumbbell Row
+28,Leg Extension
+29,Leg Curl
+30,Glute Bridge
+31,Hip Thrust
+32,Dumbbell Press
+33,Cable Tricep Extension
+34,Hammer Curl
+35,Chest Press
+36,Cable Chest Fly
+37,Back Extension
+38,Thrusters
+39,Goblet Squat
+40,Box Jump
+41,Cable Tricep Pushdown
+42,Cable Bicep Curl
+43,Battle Rope
+44,Step-Up
+45,Bulgarian Split Squat
