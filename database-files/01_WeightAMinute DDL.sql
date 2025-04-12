@@ -72,10 +72,9 @@ CREATE TABLE BlogPosts
 CREATE TABLE GymRequests
 (
     userId      int,
-    requestId   int,
+    requestId   int AUTO_INCREMENT,
     gymDetails  text NOT NULL,
     requestDate datetime DEFAULT CURRENT_TIMESTAMP,
-    reviewId    int,
     PRIMARY KEY (userId, requestId),
     CONSTRAINT fk_reviewId_gymrequests_users
         FOREIGN KEY (reviewId) REFERENCES Users (userId)

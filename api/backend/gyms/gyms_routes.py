@@ -118,6 +118,27 @@ def get_gym_request():
   except Exception as e: 
     return jsonify({'error': str(e)}), 500 
 
+@gyms.route('/gymRequests', methods=['POST'])
+def make_gym_request():
+  try: 
+    data = request.json 
+    details = data['details']
+
+    query = '''
+    INSERT INTO GymRequests (userId, gymDetails)
+    VALUES (0, %s)
+    '''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (details,))
+
+    response = make_response(jsonify(cursor.fetchall()))
+    response.status_code = 200
+
+    return response
+  except Exception as e: 
+    return jsonify({'error': str(e)}), 500 
+
 @gyms.route('/gymRequests/<gymRequestId>', methods=['DELETE'])
 def delete_gym_request(gymRequestId):
   try:
