@@ -8,7 +8,7 @@ st.set_page_config(layout = 'wide')
 
 SideBarLinks()
 
-st.title('Add Admin Home Page')
+st.title('Welcome to the Admin Home Page!')
 
 if st.button('Update FAQs', 
              type='primary',
