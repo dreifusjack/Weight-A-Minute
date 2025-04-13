@@ -12,7 +12,6 @@ from sqlalchemy import create_engine
 from dotenv import load_dotenv
 
 
-# add connection retry logic
 def create_db_connection(max_retries=5, retry_delay=3):
 
     # load the env file
@@ -48,7 +47,6 @@ def create_db_connection(max_retries=5, retry_delay=3):
                 raise
 
 
-# main execution
 def main():
     try:
 
