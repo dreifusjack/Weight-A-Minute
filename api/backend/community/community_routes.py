@@ -40,3 +40,42 @@ def get_gym_records(gymId):
         return response
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@community.route('/gyms/<gymId>/records', methods=['POST'])
+def add_record(gymId):
+    try:
+        data = request.get_json()
+        userId = data.get('userId')
+        name = data.get('name')
+        record_type = data.get('type')
+        weight = data.get('weight')
+        reps = data.get('reps')
+
+        query = '''
+            INSERT INTO Records (userId, name, type, weight, reps, gymId)
+            VALUES (%s, %s, %s, %s, %s, %s)
+        '''
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (userId, name, record_type, weight, reps, gymId))
+        db.get_db().commit()
+        return jsonify(cursor.fetchall()), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+@community.route('/gyms/<gymId>/records', methods=['DELETE'])
+def delete_record(gymId):
+    try:
+        data = request.get_json()
+        userId = data.get('userId')
+        name = data.get('name')
+
+        query = '''
+            DELETE FROM Records 
+            WHERE gymId = %s AND userId = %s AND name = %s
+        '''
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (gymId, userId, name))
+        db.get_db().commit()
+        return jsonify(cursor.fetchall()), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
