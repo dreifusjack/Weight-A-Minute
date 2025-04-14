@@ -79,3 +79,37 @@ def delete_record(gymId):
         return jsonify(cursor.fetchall()), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@community.route('/gyms/<gymId>/subscriptions', methods=['GET'])
+def get_gym_subscriptions(gymId):
+    try:
+        query = '''
+            SELECT subscriptionId, userId, tier, monthlyFee, length
+            FROM Memberships
+            WHERE gymId = %s
+            '''
+
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (gymId,))
+        response = make_response(jsonify(cursor.fetchall()))
+        response.status_code = 200
+        return response
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+@community.route('/gyms/<gymId>/subscriptions', methods=['DELETE'])
+def delete_subscription(gymId):
+    try:
+        data = request.get_json()
+        subscriptionId = data.get('subscriptionId')
+
+        query = '''
+            DELETE FROM Memberships
+            WHERE gymId = %s AND subscriptionId = %s
+        '''
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (gymId, subscriptionId))
+        db.get_db().commit()
+        return jsonify(cursor.fetchall()), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
