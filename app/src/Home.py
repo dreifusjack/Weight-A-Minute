@@ -82,5 +82,10 @@ if st.button('Act as App Administrator',
     st.session_state['first_name'] = 'Adam'
     st.switch_page('pages/Admin_Home.py')
 
-
-
+if st.button('Act as Mowen Sharf, a General User',
+            type = 'primary',
+            use_container_width=True):
+    st.session_state['authenticated'] = True
+    st.session_state['role'] = 'user'
+    st.session_state['first_name'] = 'Mowen'
+    st.switch_page('pages/User_Home.py')
