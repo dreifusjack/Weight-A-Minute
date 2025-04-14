@@ -48,6 +48,25 @@ def get_single_user(userId):
   except Exception as e:
     return jsonify({'error': str(e)}), 500
 
+@users.route('/trainer/clients/<trainerId>', methods=['Get'])
+def get_trainers_clients(trainerId):
+  try:
+    query = '''
+    SELECT *
+    FROM Users u JOIN UsersTrainedBy utb ON u.userId = utb.userId
+      JOIN Trainers t ON utb.trainerId = t.trainerId
+    WHERE t.trainerId = %s
+    '''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (trainerId,))
+    response = make_response(jsonify(cursor.fetchall()))
+    response.status_code = 200
+    
+    return response 
+  except Exception as e:
+    return jsonify({'error': str(e)}), 500
+
 # for admin use, sends an email notifcation to all users 
 @users.route('/users/notification', methods=['POST'])
 def send_notification():

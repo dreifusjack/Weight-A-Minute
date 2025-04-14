@@ -63,6 +63,7 @@ if st.button('Act as Hugh Jarms, a Personal Trainer',
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'usaid_worker'
     st.session_state['first_name'] = 'Hugh'
+    st.session_state['trainerId'] = '1'
     st.switch_page('pages/Personal_Trainer_Home.py')
 
 if st.button('Act as Gym Owner', 

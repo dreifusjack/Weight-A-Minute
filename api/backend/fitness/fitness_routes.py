@@ -39,6 +39,25 @@ def create_workout():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@fitness.route('/completedWorkouts/<userId>', methods=['GET'])
+def get_user_workouts(userId):
+    try:
+        query = '''
+        SELECT w.workoutId, w.name, cw.completedAt, cw.notes
+        FROM Users u NATURAL JOIN CompletedWorkouts cw
+            NATURAL JOIN Workouts w 
+        WHERE u.userId = %s
+        '''
+
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (userId,))
+        response = make_response(jsonify(cursor.fetchall()))
+        response.status_code = 200
+        
+        return response 
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 # add a completed workout for a user in db
 @fitness.route('/completedWorkouts/<userId>', methods=['POST'])
