@@ -60,10 +60,10 @@ for idx, gym in enumerate(gyms):
 
             with col2:
                 if st.session_state.delete_index == idx:
-                    st.warning("Are you sure you want to remove this Gym?")
+                    st.warning("Are you sure you want to remove this gym?")
                     confirm_col, cancel_col = st.columns(2)
                     with confirm_col:
-                        if st.button("Yes, removes", key=f"confirm_delete_{idx}"):
+                        if st.button("Yes, remove", key=f"confirm_delete_{idx}"):
                             requests.delete(API_URL + f"g/gyms/{gym_id}")
                             st.session_state.delete_index = None
                             st.rerun()
