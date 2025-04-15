@@ -7,7 +7,6 @@ fitness = Blueprint('fitness', __name__)
 
 # routes go here
 
-
 # create a new workout in db
 @fitness.route('/workouts', methods=['POST'])
 def create_workout():
@@ -36,6 +35,44 @@ def create_workout():
         response = make_response(jsonify({'message': "Successfully added a new workout!"}))
         response.status_code = 200
         return response
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@fitness.route('/completedWorkouts/<userId>', methods=['GET'])
+def get_user_workouts(userId):
+    try:
+        query = '''
+        SELECT w.workoutId, w.name, cw.completedAt, cw.notes
+        FROM Users u NATURAL JOIN CompletedWorkouts cw
+            NATURAL JOIN Workouts w 
+        WHERE u.userId = %s
+        '''
+
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (userId,))
+        response = make_response(jsonify(cursor.fetchall()))
+        response.status_code = 200
+        
+        return response 
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# get completed workouts from a user in db
+@fitness.route('/completedWorkouts/<user_id>', methods=['GET'])
+def get_completed_workouts(user_id):
+    try:
+        query = '''
+            SELECT cw.workoutId, cw.completedAt, cw.notes, w.name
+            FROM CompletedWorkouts cw
+            JOIN Workouts w ON cw.workoutId = w.workoutId
+            WHERE cw.userId = %s
+            ORDER BY cw.completedAt DESC
+        '''
+
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (user_id,))
+        return jsonify(cursor.fetchall()), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
