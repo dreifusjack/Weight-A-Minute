@@ -8,28 +8,21 @@ fitness = Blueprint('fitness', __name__)
 # routes go here
 
 # create a new workout in db
-@fitness.route('/workouts', methods=['POST'])
-def create_workout():
+@fitness.route('/workouts/<trainerId>', methods=['POST'])
+def create_workout(trainerId):
     try:
         data = request.json
         workout_name = data['name']
         workout_time = data['time']
         times_per_week = data['times_per_week']
-        created_by_id = data['created_by_id']
 
         cursor = db.get_db().cursor()
-        cursor.execute("SELECT MAX(workoutId) as max_id FROM Workouts")
-        result = cursor.fetchone()
-        if result and 'max_id' in result and result['max_id'] is not None:
-            new_id = result['max_id'] + 1
-        else:
-            new_id = 1
 
         query = '''
-                INSERT INTO Workouts (workoutId, name, time, TimesPerWeek, CreatedById)
-                    VALUES(%s, %s, %s, %s, %s) 
+                INSERT INTO Workouts (name, time, TimesPerWeek, CreatedById)
+                    VALUES(%s, %s, %s, %s) 
                 '''
-        cursor.execute(query, (new_id, workout_name, workout_time, times_per_week, created_by_id))
+        cursor.execute(query, (workout_name, workout_time, times_per_week, trainerId))
         db.get_db().commit()
 
         response = make_response(jsonify({'message': "Successfully added a new workout!"}))
