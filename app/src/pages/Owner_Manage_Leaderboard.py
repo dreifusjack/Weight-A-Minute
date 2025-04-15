@@ -57,7 +57,12 @@ except Exception as e:
 
 if records:
     for i, record in enumerate(records):
-        st.write(f"**User:** {record.get('userId', 'N/A')}")
+        user_id = (record.get('userId', 'N/A'))
+
+        user = requests.get(API_URL + f'u/users/{user_id}').json()
+
+        name = f"{user[0]['firstName']} {user[0]['lastName']}"
+        st.write(f"**Member:** {name}")
         st.write(f"**Record Name:** {record.get('name', 'N/A')}")
         st.write(f"**Type:** {record.get('type', 'N/A')}")
         st.write(f"**Weight:** {record.get('weight', 'N/A')}")
