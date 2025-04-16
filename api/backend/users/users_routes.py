@@ -207,4 +207,51 @@ def delete_faq(faqId):
     return response
   except Exception as e:
     return jsonify({'error': str(e)}), 500
+
+# get information for a specific trainer
+@users.route('/trainer/<trainerId>', methods=['GET'])
+def getTrainerInfo(trainerId):
+  try: 
+    query = '''
+    SELECT *
+    FROM Trainers
+    WHERE trainerId = %s
+    '''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (trainerId,))
+
+    response = make_response(jsonify(cursor.fetchall()))
+    response.status_code = 200
+
+    return response
+  except Exception as e:
+    return jsonify({'error': str(e)}), 500
+  
+# set information for a specific trainer
+@users.route('/trainer/<trainerId>', methods=['PUT'])
+def setTrainerInfo(trainerId):
+  try: 
+    data = request.json
+    type = data['type']
+    yoe = data['YOE']
+    description = data['description']
+    query = '''
+    UPDATE Trainers
+    SET type = %s,
+        YOE = %s,
+        description = %s
+    WHERE trainerId = %s
+    '''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (type, yoe, description, trainerId))
+
+    db.get_db().commit()
+    response = make_response(jsonify({'message': f'FAQ with id: {faqId} successfully updated'}))
+    response.status_code = 200
+
+    return response
+  except Exception as e:
+    return jsonify({'error': str(e)}), 500
   

@@ -23,15 +23,54 @@ trainerId = st.session_state['trainerId']
 if 'exercise_edit_id' not in st.session_state:
     st.session_state.exercise_edit_id = None
 
-def start_editing_exercise(id):
-    st.session_state.exercise_edit_id = id
+allExercises = requests.get(API_URL + f'/g/exercises').json()
+exerciseNames = [item["name"] for item in allExercises]
+name_to_id = {item["name"]: item["exerciseId"] for item in allExercises}
 
+def start_editing_exercise(workoutId, exerciseid):
+    st.session_state.exercise_edit_id = f"{workoutId}_{exerciseid}"
 
-def deleteExercise(exerciseId):
-    return
+def addExercise(workoutId, exerciseId, sets, reps):
+    try: 
+        payload = {
+            "sets": sets,
+            "reps": reps
+        }
+        requests.post(API_URL + f'/f/workouts/{workoutId}/{exerciseId}', json=payload)
+        st.session_state.exercise_edit_id = None
+        st.rerun()
+    except Exception as e:
+        st.error(f"Failed to change exercise in workout: {e}")
 
-def editExercise(exerciseId, sets, reps):
-    return
+def deleteExercise(workoutId, exerciseId):
+    try:
+        requests.delete(API_URL + f'/f/workouts/{workoutId}/{exerciseId}')
+    except Exception as e:
+        st.error(f"Failed to delete exercise in workout: {e}")
+
+def editExercise(workoutId, exerciseId, sets, reps):
+    try: 
+        payload = {
+            "sets": sets,
+            "reps": reps
+        }
+        requests.put(API_URL + f'/f/workouts/{workoutId}/{exerciseId}', json=payload)
+        st.session_state.exercise_edit_id = None
+        st.rerun()
+    except Exception as e:
+        st.error(f"Failed to change exercise in workout: {e}")
+
+def createNewWorkout(name, timesPerWeek):
+    try: 
+        payload = {
+            "name": name,
+            "time": "12:00:00",
+            "times_per_week": timesPerWeek
+        }
+        requests.post(API_URL + f'/f/workouts/createdBy/{trainerId}', json=payload)
+        st.rerun()
+    except Exception as e:
+        st.error(f"Failed to change exercise in workout: {e}")
 
 def workoutCard(workoutData, id):
     with st.container(height=300, border=False):
@@ -43,7 +82,7 @@ def workoutCard(workoutData, id):
                 sets = workout.get("sets", "Missing sets")
                 
                 with st.container(border=True):
-                    if st.session_state.exercise_edit_id == workout['exerciseId']:
+                    if st.session_state.exercise_edit_id == f"{id}_{workout['exerciseId']}":
                         st.markdown(f"**{name}**:")
                         exCol = st.columns([0.2, 0.2, 0.2, 0.1, 0.15, 0.15])
                         with exCol[0]:
@@ -64,7 +103,7 @@ def workoutCard(workoutData, id):
                             )
                         with exCol[4]:
                             if st.button("✅", key=f"save_{workout['exerciseId']}_{id}"):
-                                editExercise(workout['exerciseId'], new_sets, new_reps)
+                                editExercise(id, workout['exerciseId'], new_sets, new_reps)
                         with exCol[5]:
                             if st.button("❌", key=f"cancel_{workout['exerciseId']}_{id}"):
                                 st.session_state.exercise_edit_id = None
@@ -79,7 +118,7 @@ def workoutCard(workoutData, id):
                             "✏️", 
                             key=f"edit_{name}_{id}",
                             on_click=start_editing_exercise,
-                            args=(workout['exerciseId'],),
+                            args=(id, workout['exerciseId'],),
                             )
                         
                         with exCol[2]:
@@ -87,8 +126,33 @@ def workoutCard(workoutData, id):
                             "🗑️", 
                             key=f"delete_{name}_{id}",
                             on_click=deleteExercise,
-                            args=(workout['exerciseId'],),
+                            args=(id, workout['exerciseId'],),
                             )
+        with cols[len(workoutData) % 2]:
+            selected_exercise = st.selectbox(
+                "Add an Exercise",
+                options=exerciseNames,
+                key=f"addToWorkout{id}"
+            )
+            createCol = st.columns([.3, .2, .3, .2])
+            with createCol[0]:
+                create_new_sets = st.number_input(
+                    "Sets", 
+                    min_value=1,
+                    key=f"sets_{name_to_id[selected_exercise]}_{id}_create"
+                )
+            with createCol[1]:
+                st.markdown(f"**x**")
+            with createCol[2]:
+                create_new_reps = st.number_input(
+                    "Reps", 
+                    min_value=1,
+                    key=f"reps_{name_to_id[selected_exercise]}_{id}_create"
+                )
+            with createCol[3]:
+                if st.button("✅", key=f"addnewexerpciseto_{id}"):
+                    addExercise(id, name_to_id[selected_exercise], create_new_sets, create_new_reps)
+
                     
 
 
@@ -104,11 +168,21 @@ for index, workout in enumerate(workouts):
     workout_name = workout.get("name", "Missing name")
     workout_time = workout.get("time", "Missing time")
     workout_timesPerWeek = workout.get("TimesPerWeek", "Missing times per week")
-    with st.container():
+    with st.container(border=True):
         st.markdown(f"**Name:** {workout_name}")
-        st.markdown(f"**Time:** {workout_time}")
         st.markdown(f"**Target Times Per Week:** {workout_timesPerWeek}")
-        st.markdown(f"**ID:** {workoutId}")
-        with st.expander(f"View/Edit", expanded=False):
+        with st.container():
             aworkout = requests.get(API_URL + f'/f/workouts/{workoutId}').json()
             workoutCard(aworkout, workoutId)
+
+with st.container(border=True):
+    st.markdown("Create a New Workout")
+    createForm = st.columns([.33, .33, .34])
+    with createForm[0]:
+        name = st.text_input("Name")
+    with createForm[1]:
+        timesPerWeek = st.number_input("Target Times Per Week", min_value=1)
+    with createForm[2]:
+        if st.button("Create"):
+            if name:
+                createNewWorkout(name, timesPerWeek)

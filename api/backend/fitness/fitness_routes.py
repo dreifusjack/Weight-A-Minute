@@ -17,12 +17,18 @@ def create_workout(trainerId):
         times_per_week = data['times_per_week']
 
         cursor = db.get_db().cursor()
+        cursor.execute("SELECT MAX(workoutId) as max_id FROM Workouts")
+        result = cursor.fetchone()
+        if result and 'max_id' in result and result['max_id'] is not None:
+            new_id = result['max_id'] + 1
+        else:
+            new_id = 1
 
         query = '''
-                INSERT INTO Workouts (name, time, TimesPerWeek, CreatedById)
-                    VALUES(%s, %s, %s, %s) 
+                INSERT INTO Workouts (workoutId, name, time, timesPerWeek, CreatedById)
+                    VALUES(%s, %s, %s, %s, %s) 
                 '''
-        cursor.execute(query, (workout_name, workout_time, times_per_week, trainerId))
+        cursor.execute(query, (new_id, workout_name, workout_time, times_per_week, trainerId))
         db.get_db().commit()
 
         response = make_response(jsonify({'message': "Successfully added a new workout!"}))
@@ -43,6 +49,30 @@ def get_trainer_workouts(trainerId):
         cursor = db.get_db().cursor()
         cursor.execute(query, (trainerId,))
         response = make_response(jsonify(cursor.fetchall()))
+        response.status_code = 200
+
+        return response
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# addes an exercise to a workout witht the given sets and reps
+@fitness.route('/workouts/<workoutId>/<exerciseId>', methods=['POST'])
+def addExerciseToWorkout(workoutId, exerciseId):
+    try:
+        data = request.json
+        sets = data['sets']
+        reps = data['reps']
+
+        query = '''
+        INSERT INTO WorkoutExercises (exerciseId, workoutId, reps, sets)
+            VALUES(%s, %s, %s, %s) 
+        '''
+
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (exerciseId, workoutId, reps, sets))
+
+        db.get_db().commit()
+        response = make_response(jsonify({'message': f'Exercise with id: {exerciseId} in workout with id {workoutId} successfully added'}))
         response.status_code = 200
 
         return response
@@ -72,6 +102,26 @@ def updateExerciseInWorkout(workoutId, exerciseId):
         response.status_code = 200
 
         return response
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# delete an exercise from a workout
+@fitness.route('/workouts/<workoutId>/<exerciseId>', methods=['DELETE'])
+def deleteExerciseFromWorkout(workoutId, exerciseId):
+    try:
+        query = '''
+                DELETE FROM WorkoutExercises 
+                WHERE workoutId = %s AND exerciseId = %s
+                '''
+
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (workoutId, exerciseId,))
+
+        if cursor.rowcount == 0:
+            return jsonify({'message': f'Workout with id: {workoutId} and exerciseId: {exerciseId} not found'}), 404
+
+        db.get_db().commit()
+        return jsonify({'message': f'Workout with id: {workoutId} and exerciseId: {exerciseId} successfully deleted'}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 

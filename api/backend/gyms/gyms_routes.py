@@ -160,3 +160,19 @@ def delete_gym_request(gymRequestId):
   except Exception as e: 
     return jsonify({'error': str(e)}), 500
 
+@gyms.route('/exercises', methods=['GET'])
+def get_all_exercises():
+  try:
+    query = '''
+    SELECT *
+    FROM Exercises
+    '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+
+    response = make_response(jsonify(cursor.fetchall()))
+    response.status_code = 200
+
+    return response
+  except Exception as e: 
+    return jsonify({'error': str(e)}), 500 
