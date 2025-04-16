@@ -17,10 +17,10 @@ if st.button('View a Gym Leaderboard📊',
              use_container_width=True):
   st.switch_page('pages/User_View_Leaderboard.py')
 
-if st.button('Create an FAQ🙋',
+if st.button('Got a question? View our FAQs🙋',
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/User_Create_FAQ.py')
+  st.switch_page('pages/User_View_FAQs.py')
 
 if st.button('Edit a Completed Workout🏋️‍♂️',
              type='primary',
