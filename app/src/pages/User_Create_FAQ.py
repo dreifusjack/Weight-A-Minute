@@ -5,6 +5,7 @@ from modules.nav import SideBarLinks
 from shared.api_url import API_URL
 logger = logging.getLogger(__name__)
 
+SideBarLinks()
 
 if st.button("⬅️ Go Back to User Home", use_container_width=True):
     st.switch_page('pages/User_Home.py')

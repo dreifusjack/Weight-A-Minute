@@ -6,6 +6,8 @@ from shared.api_url import API_URL
 
 logger = logging.getLogger(__name__)
 
+SideBarLinks()
+
 if st.button("⬅️ Go Back to Owner Home", use_container_width=True):
     st.switch_page('pages/Owner_Home.py')
 

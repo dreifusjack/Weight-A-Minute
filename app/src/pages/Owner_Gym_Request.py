@@ -6,6 +6,8 @@ import streamlit as st
 from modules.nav import SideBarLinks
 from shared.api_url import API_URL
 
+SideBarLinks()
+
 if st.button("⬅️ Go Back to Owner Home", use_container_width=True):
     st.switch_page('pages/Owner_Home.py')
 

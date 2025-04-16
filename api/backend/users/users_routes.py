@@ -248,7 +248,7 @@ def setTrainerInfo(trainerId):
     cursor.execute(query, (type, yoe, description, trainerId))
 
     db.get_db().commit()
-    response = make_response(jsonify({'message': f'FAQ with id: {faqId} successfully updated'}))
+    response = make_response(jsonify({'message': f'Trainer with id: {trainerId} successfully updated'}))
     response.status_code = 200
 
     return response
