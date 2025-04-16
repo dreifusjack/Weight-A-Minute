@@ -90,7 +90,7 @@ def workoutCard(workoutData, id):
                                 "Sets", 
                                 min_value=1, 
                                 value=sets,
-                                key=f"sets_{workout['exerciseId']}_{id}"
+                                key=f"sets_{workout['exerciseId']}_{id}_{index}"
                             )
                         with exCol[1]:
                             st.markdown(f"**x**")
@@ -99,13 +99,13 @@ def workoutCard(workoutData, id):
                                 "Reps", 
                                 min_value=1, 
                                 value=reps,
-                                key=f"reps_{workout['exerciseId']}_{id}"
+                                key=f"reps_{workout['exerciseId']}_{id}_{index}"
                             )
                         with exCol[4]:
-                            if st.button("✅", key=f"save_{workout['exerciseId']}_{id}"):
+                            if st.button("✅", key=f"save_{workout['exerciseId']}_{id}_{index}"):
                                 editExercise(id, workout['exerciseId'], new_sets, new_reps)
                         with exCol[5]:
-                            if st.button("❌", key=f"cancel_{workout['exerciseId']}_{id}"):
+                            if st.button("❌", key=f"cancel_{workout['exerciseId']}_{id}_{index}"):
                                 st.session_state.exercise_edit_id = None
                                 st.rerun()
                     else:
@@ -116,7 +116,7 @@ def workoutCard(workoutData, id):
                         with exCol[1]:
                             st.button(
                             "✏️", 
-                            key=f"edit_{name}_{id}",
+                            key=f"edit_{name}_{id}_{index}",
                             on_click=start_editing_exercise,
                             args=(id, workout['exerciseId'],),
                             )
@@ -124,7 +124,7 @@ def workoutCard(workoutData, id):
                         with exCol[2]:
                             st.button(
                             "🗑️", 
-                            key=f"delete_{name}_{id}",
+                            key=f"delete_{name}_{id}_{index}",
                             on_click=deleteExercise,
                             args=(id, workout['exerciseId'],),
                             )

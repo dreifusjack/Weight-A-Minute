@@ -38,6 +38,12 @@ st.title('Welcome to Weight A Minute!')
 st.write('\n\n')
 st.write('### Hi! As which user would you like to log in?')
 
+# For each of the user personas for which we are implementing
+# functionality, we put a button on the screen that the user 
+# can click to MIMIC logging in as that mock user. 
+
+
+
 if st.button('Act as Hugh Jarms, a Personal Trainer', 
             type = 'primary', 
             use_container_width=True):
