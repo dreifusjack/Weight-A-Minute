@@ -41,8 +41,8 @@ Each service runs in its own Docker container:
    - Streamlit pages for user dashboards supporting 4 distint personas.
 2. **Flask REST API** (`./api`)  
    - Endpoints for workouts, trainers, gyms, and users.  
-3. **MySQL Database** (`./database`)  
-   - Initialized via SQL scripts in `./database/init/` (users, workouts, gyms, equipment tables, etc.).
+3. **MySQL Database** (`./database-files`)  
+   - Initialized via SQL scripts in `./database-files/db_csvs/` (users, workouts, gyms, equipment tables, etc.).
 
 ---
 
@@ -54,12 +54,12 @@ Each service runs in its own Docker container:
    - Entry point: `app/src/Home.py`  
    - Check sidebar links & page routing in `app/src/nav.py`  
 3. **Flask API (`./api`)**  
-   - Main app: `api/main.py`  
-   - Routes organized under `api/routes/` (e.g. `workouts.py`, `trainers.py`)  
+   - Main app: `api/backend/rest_entry.py`  
+   - Routes organized under `api/backend/(blueprint_name)` (e.g. `workouts.py`, `trainers.py`)  
 4. **Database (`./database-files`)**  
    - Tables in `01_WEIGHTAMINUTE DDL.sql`  
    - Seed data handled in `/db_csvs`
-5. **IMPORTANT** create an env file in `\api` directory following this format (Note MAIL_USERNAME and PASSWORD must match what is below): 
+5. **IMPORTANT** (realize this is not secure but just for grading purposes) create an env file in `./api` directory following this format (Note MAIL_USERNAME and PASSWORD must match what is below): 
 ```
 SECRET_KEY=someCrazyS3cR3T!Key.!
 DB_USER=root
