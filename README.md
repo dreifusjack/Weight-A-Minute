@@ -87,4 +87,4 @@ MAIL_PASSWORD=xopdyhjlnkjhrlsp # app generated password
   ```bash
   docker compose up
   ```
-  Then navigate to localhost:8501
+  Then navigate to http://localhost:8501/
