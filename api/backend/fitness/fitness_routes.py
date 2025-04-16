@@ -7,8 +7,8 @@ fitness = Blueprint('fitness', __name__)
 
 # routes go here
 
-# create a new workout in db
-@fitness.route('/workouts/<trainerId>', methods=['POST'])
+# create a new workout in db under a specic trainer
+@fitness.route('/workouts/createdBy/<trainerId>', methods=['POST'])
 def create_workout(trainerId):
     try:
         data = request.json
@@ -31,6 +31,71 @@ def create_workout(trainerId):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# get all the workouts made by a specific trainer
+@fitness.route('/workouts/createdBy/<trainerId>', methods=['GET'])
+def get_trainer_workouts(trainerId):
+    try:
+        query = '''
+        SELECT *
+        FROM Workouts w
+        WHERE w.createdById = %s
+        '''
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (trainerId,))
+        response = make_response(jsonify(cursor.fetchall()))
+        response.status_code = 200
+
+        return response
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# edit the sets and reps of an exercise in a workout
+@fitness.route('/workouts/<workoutId>/<exerciseId>', methods=['PUT'])
+def updateExerciseInWorkout(workoutId, exerciseId):
+    try:
+        data = request.json
+        sets = data['sets']
+        reps = data['reps']
+
+        query = '''
+        UPDATE WorkoutExercises 
+        SET sets = %s,
+            reps = %s 
+        WHERE workoutId = %s AND exerciseId = %s
+        '''
+
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (sets, reps, workoutId, exerciseId))
+
+        db.get_db().commit()
+        response = make_response(jsonify({'message': f'Exercise with id: {exerciseId} in workout with id {workoutId} successfully updated'}))
+        response.status_code = 200
+
+        return response
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# get a specific workout
+@fitness.route('/workouts/<workoutId>', methods=['GET'])
+def get_workout(workoutId):
+    try:
+        query = '''
+        SELECT * 
+        FROM Workouts w JOIN WorkoutExercises we ON w.workoutId = we.workoutId
+            JOIN Exercises e ON we.exerciseId = e.exerciseId
+        WHERE w.workoutId = %s
+        '''
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (workoutId,))
+        response = make_response(jsonify(cursor.fetchall()))
+        response.status_code = 200
+
+        return response
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# get all the completed workouts for a specific user
 @fitness.route('/completedWorkouts/<userId>', methods=['GET'])
 def get_user_workouts(userId):
     try:
