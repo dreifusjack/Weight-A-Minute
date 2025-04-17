@@ -134,7 +134,7 @@ def make_gym_request():
 
     query = '''
     INSERT INTO GymRequests (requestId, userId, gymDetails, requestDate)
-    VALUES (%s, 5, %s, "2025-04-17")
+    VALUES (%s, 5, %s, "4/17/2025")
     '''
 
     cursor = db.get_db().cursor()
