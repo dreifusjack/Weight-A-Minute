@@ -8,7 +8,7 @@ st.set_page_config(layout = 'wide')
 
 SideBarLinks()
 
-st.title('Add Owner Home Page')
+st.title('Owner Home Page!')
 
 if st.button('Create A Gym Request', 
              type='primary',

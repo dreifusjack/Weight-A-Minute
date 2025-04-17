@@ -10,7 +10,7 @@ st.set_page_config(layout='wide')
 
 SideBarLinks()
 
-if st.button("⬅️ Go Back to Admin Home"):
+if st.button("⬅️ Go Back to Trainer Home"):
     st.switch_page('pages/Personal_Trainer_Home.py')
 
 st.title('My Clients')
