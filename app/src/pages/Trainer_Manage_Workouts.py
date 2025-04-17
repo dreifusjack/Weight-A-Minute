@@ -24,8 +24,8 @@ if 'exercise_edit_id' not in st.session_state:
     st.session_state.exercise_edit_id = None
 
 allExercises = requests.get(API_URL + f'/g/exercises').json()
-exerciseNames = [item["name"] for item in allExercises]
-name_to_id = {item["name"]: item["exerciseId"] for item in allExercises}
+exerciseNames = [item.get("name", "name not found") for item in allExercises]
+name_to_id = {item.get("name", "name not found"): item.get("exerciseId", "id not found") for item in allExercises}
 
 def start_editing_exercise(workoutId, exerciseid):
     st.session_state.exercise_edit_id = f"{workoutId}_{exerciseid}"
