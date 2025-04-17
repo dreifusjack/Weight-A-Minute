@@ -69,14 +69,10 @@ CREATE TABLE BlogPosts
 CREATE TABLE GymRequests
 (
     userId      int,
-    requestId   int AUTO_INCREMENT,
+    requestId   int,
     gymDetails  text NOT NULL,
     requestDate datetime DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (userId, requestId),
-    CONSTRAINT fk_reviewId_gymrequests_users
-        FOREIGN KEY (reviewId) REFERENCES Users (userId)
-            ON DELETE SET NULL
-            ON UPDATE CASCADE,
     CONSTRAINT fk_userId_gymrequests_users
         FOREIGN KEY (userId) REFERENCES Users (userId)
             ON DELETE CASCADE
