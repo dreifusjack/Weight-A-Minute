@@ -116,7 +116,6 @@ def create_faq():
     question = data['question']
     answer = data['answer']
 
-    # auto incr not working :(
     cursor = db.get_db().cursor()
     cursor.execute("SELECT MAX(faqId) as max_id FROM FAQs")
     result = cursor.fetchone()

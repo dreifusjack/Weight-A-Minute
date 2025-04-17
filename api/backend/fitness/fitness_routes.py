@@ -5,8 +5,6 @@ from backend.db_connection import db
 
 fitness = Blueprint('fitness', __name__)
 
-# routes go here
-
 # create a new workout in db under a specic trainer
 @fitness.route('/workouts/createdBy/<trainerId>', methods=['POST'])
 def create_workout(trainerId):

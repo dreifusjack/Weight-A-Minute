@@ -5,9 +5,6 @@ from backend.db_connection import db
 
 community = Blueprint('community', __name__)
 
-# routes go here
-
-
 # get all blog posts
 @community.route('/blogPosts', methods=['GET'])
 def get_blog_posts():

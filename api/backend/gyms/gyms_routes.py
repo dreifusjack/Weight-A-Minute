@@ -16,7 +16,6 @@ def create_gym():
     price = data['price']
     owner_id = data['owner_id']
 
-     # auto incr not working :(
     cursor = db.get_db().cursor()
     cursor.execute("SELECT MAX(gymId) as max_id FROM Gyms")
     result = cursor.fetchone()
