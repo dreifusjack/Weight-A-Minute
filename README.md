@@ -1,90 +1,83 @@
-# Weight a Minute! – Spring 2025 CS 3200 Project
+# Weight a Minute! – Spring 2025 CS 3200 Project
 
-**Members:**  
-- Henry Caldwell (caldwell.h@northeastern.edu)  
-- Jack Dreifus (dreifus.j@northeastern.edu)  
-- Owen Sharpe (sharpe.o@northeastern.edu)  
-- Christopher Pyle (pyle.c@northeastern.edu)  
+**Members:**
+
+- Henry Caldwell (caldwell.h@northeastern.edu)
+- Jack Dreifus (dreifus.j@northeastern.edu)
+- Owen Sharpe (sharpe.o@northeastern.edu)
+- Christopher Pyle (pyle.c@northeastern.edu)
 
 ---
 
-## About the Application 
+## About
 
-We’re building **Weight a Minute!**, a fitness app that helps users track workouts, connect with trainers, and discover gyms that match their equipment needs. Because not every gym offers the same machines, generic plans often fall short—our app solves this by delivering customized workouts based on the exact equipment available at a user’s gym. Three main personas benefit:
-
-1. **Gym‐goers:** Streamline workouts, track progress, and never waste time on unusable plans.  
-2. **Trainers:** Engage clients asynchronously, assign routines, review performance, and post blog content.  
-3. **Gym Owners:** Showcase facilities—upload location, equipment lists, memberships, photos, and promotions.
-
-Key features:  
-- Create, customize, and track workout routines  
-- View trainer posts, tips, and faqs  
-- Browse and sign up for gyms and even post you own
+**Weight a Minute!** is a fitness platform that lets gym-goers, trainers, and gym owners track workouts, assign routines, manage equipment, and view analytics. It keeps everything centralized so that users have a one stop location to optimize their workouts.
 
 ---
 
 ## Prerequisites
 
-- Git
-- VS Code
-- Python 3.8+ (Anaconda/Miniconda recommended)  
-- Docker 
-- mySQL 
+- [Docker](https://docs.docker.com/get-docker/)
+- (Optional) Python 3.9
 
 ---
 
-## Project Architecture
+## Environment Variables
 
-Each service runs in its own Docker container:
+Create a file at `./api/.env` with the following entries (replace values as needed):
 
-1. **Streamlit UI** (`./app`)  
-   - Streamlit pages for user dashboards supporting 4 distint personas.
-2. **Flask REST API** (`./api`)  
-   - Endpoints for workouts, trainers, gyms, and users.  
-3. **MySQL Database** (`./database-files`)  
-   - Initialized via SQL scripts in `./database-files/db_csvs/` (users, workouts, gyms, equipment tables, etc.).
-
----
-
-## Getting Started
-
-1. **Clone & Explore**  
-   - Fork this repo → clone locally → `cd weight-a-minute`  
-2. **Streamlit App (`./app`)**  
-   - Entry point: `app/src/Home.py`  
-   - Check sidebar links & page routing in `app/src/nav.py`  
-3. **Flask API (`./api`)**  
-   - Main app: `api/backend/rest_entry.py`  
-   - Routes organized under `api/backend/(blueprint_name)` (e.g. `workouts.py`, `trainers.py`)  
-4. **Database (`./database-files`)**  
-   - Tables in `01_WEIGHTAMINUTE DDL.sql`  
-   - Seed data handled in `/db_csvs`
-5. **IMPORTANT** (realize this is not secure but just for grading purposes) create an env file in `./api` directory following this format (Note MAIL_USERNAME and PASSWORD must match what is below): 
-```
-SECRET_KEY=someCrazyS3cR3T!Key.!
+```dotenv
+SECRET_KEY=<your-secret-key>
 DB_USER=root
 DB_HOST=db
 DB_PORT=3306
 DB_NAME=weight-a-minute
-MYSQL_ROOT_PASSWORD= anything you want 
-MAIL_USERNAME=adammin.weightaminute@gmail.com
-MAIL_PASSWORD=xopdyhjlnkjhrlsp # app generated password
+MYSQL_ROOT_PASSWORD=<secret-root-password>
+MAIL_USERNAME=<your-mail-username>
+MAIL_PASSWORD=<your-mail-password>
 ```
 
 ---
 
-## Local Setup
+## Setup & Deployment
 
-### 1. Fork & Clone
+1. Clone the Repo
 
-- Fork this repo to your GitHub account.  
-- Clone your fork:  
-  ```bash
-  git clone https://github.com/<your‑username>/weight-a-minute.git
-  cd weight-a-minute
-  ```
-- Running the project:
-  ```bash
-  docker compose up
-  ```
-  Then navigate to http://localhost:8501/
+2. Create your .env file
+
+3. Start services
+
+```bash
+docker compose up -d
+```
+
+---
+
+## Running the Application
+
+To run the application open your browser to http://localhost:8501
+
+You can now use Weight A Minute!
+
+---
+
+## Organization
+
+### 1. Flask REST API (`/api`)
+- **Blueprints** (in `backend/`):
+  - `users` → `/u`  
+  - `gyms` → `/g`  
+  - `fitness` → `/f`  
+  - `community` → `/c` 
+
+### 2. Streamlit Frontend (`/app`)
+- **Entry Point**  
+  - `src/Home.py` sets up logging, "authentication" and loads the first page.
+- **Navigation**  
+  - `src/modules/nav.py` defines a common sidebar and links/logo.
+- **Pages** (`src/pages/`):  
+  - Each user persona (Admin, Owner, Trainer, User) has its own home and function pages, e.g.:  
+    - `Admin_Home.py`, `Admin_View_Users.py`, 
+    - `Owner_Home.py`, `Owner_Manage_Subscriptions.py` 
+    - `Trainer_Manage_Workouts.py`, `Trainer_View_Client_Workouts.py` 
+    - `User_Home.py`, `User_View_Leaderboard.py`
