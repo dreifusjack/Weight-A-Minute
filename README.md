@@ -24,7 +24,7 @@
 
 ## Environment Variables
 
-Create a file at `./api/.env` with the following entries (replace values as needed):
+Create a file at `./api/.env` with the following entries (replace values as needed, mail information must match):
 
 ```dotenv
 SECRET_KEY=<your-secret-key>
@@ -33,8 +33,8 @@ DB_HOST=db
 DB_PORT=3306
 DB_NAME=weight-a-minute
 MYSQL_ROOT_PASSWORD=<secret-root-password>
-MAIL_USERNAME=<your-mail-username>
-MAIL_PASSWORD=<your-mail-password>
+MAIL_USERNAME=adammin.weightaminute@gmail.com
+MAIL_PASSWORD=xopdyhjlnkjhrlsp
 ```
 
 ---
