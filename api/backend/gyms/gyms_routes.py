@@ -133,8 +133,8 @@ def make_gym_request():
         new_id = 1
 
     query = '''
-    INSERT INTO GymRequests (requestId, userId, gymDetails, reviewId, requestDate)
-    VALUES (%s, 0, %s, 0, "2025-04-17")
+    INSERT INTO GymRequests (requestId, userId, gymDetails, requestDate)
+    VALUES (%s, 5, %s, "2025-04-17")
     '''
 
     cursor = db.get_db().cursor()
