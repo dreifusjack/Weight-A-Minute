@@ -124,13 +124,22 @@ def make_gym_request():
     data = request.json 
     details = data['details']
 
+    cursor = db.get_db().cursor()
+    cursor.execute("SELECT MAX(requestId) as max_id FROM GymRequests")
+    result = cursor.fetchone()
+    if result and 'max_id' in result and result['max_id'] is not None:
+        new_id = result['max_id'] + 1
+    else:
+        new_id = 1
+
     query = '''
-    INSERT INTO GymRequests (userId, gymDetails)
-    VALUES (0, %s)
+    INSERT INTO GymRequests (requestId, userId, gymDetails, reviewId, requestDate)
+    VALUES (%s, 0, %s, 0, "2025-04-17")
     '''
 
     cursor = db.get_db().cursor()
-    cursor.execute(query, (details,))
+    cursor.execute(query, (new_id, details))
+    db.get_db().commit()
 
     response = make_response(jsonify(cursor.fetchall()))
     response.status_code = 200

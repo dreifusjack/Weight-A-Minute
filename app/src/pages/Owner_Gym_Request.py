@@ -40,7 +40,6 @@ with st.form("email_notification_form"):
             response = requests.post(API_URL + "g/gymRequests", json=payload)
             if response.status_code == 200:
                 st.session_state.reset_form = True 
-                st.rerun()
                 st.success("Gym request sent successfully!")
             else:
                 st.error(f"Failed to send gym request. Status code: {response.status_code}")
