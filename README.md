@@ -1,5 +1,9 @@
 # Weight a Minute! – Spring 2025 CS 3200 Project
 
+
+## VIDEO LINK
+[VIDEO](https://drive.google.com/file/d/1eD-D1CCAhQDV9ULMU5rF4US4k62vLGCw/view?usp=sharing)
+
 **Members:**
 
 - Henry Caldwell (caldwell.h@northeastern.edu)
